@@ -1,0 +1,71 @@
+<div class="conteiner__one">
+	<button routerLink = "/tickets" class="color__green" mat-raised-button color="accent">Ticket List</button>	
+	<h1>Edit Ticket</h1>
+</div>
+<form [formGroup]="form">
+	<div class="container__two">
+		<div class="div__one">
+			<p>Category <span class="required">*</span></p>
+			<div class="intermediate"></div>
+			<select  #selectedCategory formControlName = "category">
+				<option value="{{getObject.category}}">{{getObject.category}}</option>
+				<option *ngFor = "let item of category" value="{{item}}">{{item}}</option>
+			</select>
+		</div>
+		<div class="div__one">
+			<p>Name <span class="required">*</span></p>
+			<div class="intermediate"></div>
+			<input #name type="text" formControlName = "name">
+		</div>
+		<div class="div__one">
+			<p>Description</p>
+			<div class="intermediate"></div>
+			<textarea #description type="text"  formControlName = "description"></textarea>
+		</div>
+		<div class="div__one">
+			<p>Urgency <span class="required">*</span></p>
+			<div class="intermediate"></div>
+			<select #selectedUrgency formControlName = "urgency">
+				<option value="{{getObject.urgency}}">{{getObject.urgency}}</option>
+				<option  *ngFor = "let item of urgency" value="{{item}}">{{item}}</option>
+			</select>
+		</div>
+		<div class="div__one">
+			<p>Desired resolution date</p>
+			<div class="intermediate"></div>
+			
+			<mat-form-field appearance="fill">
+				<mat-label>Date</mat-label>
+				<input matInput [matDatepicker]="picker1" [min]="todayDate" formControlName = "desiredResolutionDate">
+				<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+				<mat-datepicker #picker1></mat-datepicker>
+			  </mat-form-field>
+		</div>
+		<div class="div__one">
+			<p>Add attachments</p>
+			<div class="intermediate"></div>
+			<div><input multiple type="file"></div>
+		</div>
+		<div class="div__one">
+			<p>Remove attachments</p>
+			<div class="intermediate"></div>
+			<div>
+				<div *ngFor = "let item of getObject.attacmentDto; " #item class="div__a">
+						<a >{{item.name}}</a>
+					<p (click) = "testRemov(item.name)">remove</p>
+				</div>
+			</div>
+		</div>
+		<div class="div__one">
+			<p>Comment</p>
+			<div class="intermediate"></div>
+			<textarea #comment type="text" formControlName = "comment"></textarea>
+		</div>
+	</div>
+</form>
+<div class="div__button">
+	<div class="div__button__one"></div>
+	<div class="div__button__one"><button mat-raised-button (click) = "onclicPut('Draft')">Save as Draft</button>
+		<button class="color__green" mat-raised-button color="accent" (click) = "onclicPut('New')">Submit</button></div>
+	
+</div>

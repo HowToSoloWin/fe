@@ -1,0 +1,11 @@
+<div class="block__one">
+	<div style="display: flex; justify-content: flex-end;">
+		<div style="height: 120px;"></div>
+		<!-- <button class="button__create" routerLink = "/tickets/createtickets"  mat-raised-button color="accent">Create New Ticket</button> -->
+	</div>
+	<div class="div__button">
+		<button routerLink = "/tickets" mat-raised-button>All Tickets</button>
+		<button class="button__blue" mat-raised-button color="primary">My Tickets</button>	
+	</div>
+	<app-tabletickets [ticket] = "tickets" ></app-tabletickets>
+	

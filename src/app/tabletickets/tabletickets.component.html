@@ -1,0 +1,79 @@
+<input class="custome__input" type="text">
+	<div class="conteier__table">
+		<div>
+			<p>ID</p>
+			<div>
+				<div (click) = "sortById('Asc')" class="triangle__up"></div>
+				<div (click) = "sortById('Desc')" class="triangle__down"></div>
+			</div>
+		</div>
+		<div>
+			<p>Name</p>
+			<div>
+				<div  (click) = "sortByName('Asc')" class="triangle__up"></div>
+				<div (click) = "sortByName('Desc')" class="triangle__down"></div>
+			</div>
+		</div>
+		<div>
+			<p>Desired Date</p>
+			<div>
+				<div (click) = "sortByData('Asc')" class="triangle__up"></div>
+				<div (click) = "sortByData('Desc')" class="triangle__down"></div>
+			</div>
+		</div>
+		<div>
+			<p>Urgency</p>
+			<div>
+				<div (click) = "sortByUrgency('Asc')" class="triangle__up"></div>
+				<div  (click) = "sortByUrgency('Desc')" class="triangle__down"></div>
+			</div>
+		</div>
+		<div>
+			<p>Status</p>
+			<div>
+				<div class="triangle__up"></div>
+				<div class="triangle__down"></div>
+			</div>
+		</div>
+		<div>
+			<p>Action</p>
+			<div>
+				<div class="triangle__up"></div>
+				<div class="triangle__down"></div>
+			</div>
+		</div>
+	</div>
+	
+	<div *ngFor = " let item of ticket"  class="conteier__table color__whit">
+		<div>
+			<p >{{item.id}}</p>
+		</div>
+		<div>
+			<a [routerLink] = "['/overview/history/',item.id]"	>{{item.name}}</a>
+		</div>
+		<div>
+			<p>{{item.desiredResolutionDate | date : 'dd/MM/y'}}</p>
+		</div>
+		<div>
+			<p>{{item.urgency}}</p>
+		</div>
+		<div>
+			<p>{{item.state}}</p>
+		</div>
+		<div>
+			<div class="btn-group mr-3">
+				<button  type="button" class="btn btn-primary">Split me</button>
+				<div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+				  <button class="btn btn-primary dropdown-toggle-split" ngbDropdownToggle></button>
+				  <div  class="dropdown-menu" ngbDropdownMenu>
+					  <div *ngFor = "let a of item.actions">
+						<button  (click) = "actionUpdate(a,item.id)" ngbDropdownItem>{{a}}</button>
+					  </div>
+				  </div>
+				</div>
+			  </div>
+		</div>
+	</div>
+
+
+	

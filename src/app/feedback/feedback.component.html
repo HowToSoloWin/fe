@@ -1,0 +1,10 @@
+<div class="div__one">
+	<button class="green_edit" routerLink = "/tickets" mat-raised-button color="accent">Back</button>
+	<h1>Ticket({{params.id}}) - {{feedback.ticketName}}</h1>
+</div>
+<p class="p__center">Feedback</p>
+<div  class="rating-result">
+	<span *ngFor = "let item of feedbackRateOn" class="active"></span>	
+	<span *ngFor = "let item of feedbackRateOff"></span> 
+</div>
+<div class="textArea__div"><div class="div__text">{{feedback.text}}</div></div>

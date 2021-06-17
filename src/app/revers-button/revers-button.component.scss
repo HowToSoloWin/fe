@@ -1,0 +1,12 @@
+.div__button{
+	display: flex;
+	
+	margin: auto;
+	justify-content: space-between;
+	>button{
+		width: 45%;
+	}
+}
+.button__blue{
+	background-color: #0087be;
+}
